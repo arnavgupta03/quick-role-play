@@ -1,5 +1,6 @@
 html {
     scroll-behavior: smooth;
+    overflow: hidden;
 }
 div.header {
     height: 600px;
@@ -15,6 +16,19 @@ div.choose-adv {
     text-align: center;
     background-repeat: no-repeat;
     background-size: cover;
-    color: antiquewhite;
+    font-family: sans-serif;
+}
+div.num-players {
+    height: 600px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: sans-serif;
+}
+div.play {
+    height: 600px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     font-family: sans-serif;
 }
