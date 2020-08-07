@@ -1,4 +1,7 @@
 div.header {
-    height: 80%;
+    height: 500px;
     text-align: center;
+    background-image: url(header.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
