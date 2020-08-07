@@ -19,12 +19,13 @@ function startAdvThree() {
 function findAdventure() {
     advChose = localStorage.getItem("adv");
     players = localStorage.getItem("players");
+    player1name = document.getElementById("player-one").value;
     if (advChose === "1"){
-        startAdvOne(players);
+        startAdvOne(players, player1name);
     } else if (advChose === "2"){
-        startAdvTwo(players);
+        startAdvTwo(players, player1name);
     } else if (advChose === "3"){
-        startAdvThree(players);
+        startAdvThree(players, player1name);
     }
 }
 function playersOne() {
@@ -39,12 +40,12 @@ function playersTwo() {
     findAdventure();
     window.location.assign("#play");
 }
-function startAdvOne(numplay) {
+function startAdvOne(numplay, play1name) {
     
 }
-function startAdvTwo(numplay) {
+function startAdvTwo(numplay, play1name) {
     
 }
-function startAdvThree(numplay) {
+function startAdvThree(numplay, play1name) {
     
 }
