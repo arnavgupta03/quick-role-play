@@ -1,3 +1,6 @@
+function chooseAdv() {
+    window.location.assign("#choose-adv");
+}
 function startAdvOne(){
     localStorage.clear();
     localStorage.setItem("adv", "1");
