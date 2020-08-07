@@ -2,9 +2,17 @@ html {
     scroll-behavior: smooth;
 }
 div.header {
-    height: 500px;
+    height: 600px;
     text-align: center;
     background-image: url(header.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: antiquewhite;
+    font-family: sans-serif;
+}
+div.choose-adv {
+    height: 600px;
+    text-align: center;
     background-repeat: no-repeat;
     background-size: cover;
     color: antiquewhite;
