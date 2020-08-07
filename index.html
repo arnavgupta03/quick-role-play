@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>QuiRP: Quick Role-Playing</title>
         <script src="index.js" type="text/javascript"></script>
         <link rel="stylesheet" href="index.css">
@@ -13,9 +14,9 @@
             <button onclick="chooseAdv()">Choose Your Adventure!</button>
         </div>
         <div class="choose-adv" id="choose-adv">
-            <button onclick="startAdvOne()">Adventure 1</button>
-            <button onclick="startAdvTwo()">Adventure 2</button>
-            <button onclick="startAdvThree()">Adventure 3</button>
+            <button onclick="choseAdvOne()">Adventure 1</button>
+            <button onclick="choseAdvTwo()">Adventure 2</button>
+            <button onclick="choseAdvThree()">Adventure 3</button>
         </div>
         <div class="num-players" id="num-players">
             <label for="player-one">Player 1 name:</label>
@@ -24,7 +25,7 @@
             <button onclick="playersTwo()">2 Players</button>
         </div>
         <div class="play" id="play">
-            
+            <p id="playerprompt"></p>
         </div>
     </body>
 </html>
