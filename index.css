@@ -2,6 +2,7 @@ html {
     scroll-behavior: smooth;
     overflow: hidden;
 }
+
 div.header {
     height: 600px;
     text-align: center;
@@ -10,7 +11,9 @@ div.header {
     background-size: cover;
     color: antiquewhite;
     font-family: sans-serif;
+    padding: 250px;
 }
+
 div.choose-adv {
     height: 600px;
     text-align: center;
@@ -18,17 +21,57 @@ div.choose-adv {
     background-size: cover;
     font-family: sans-serif;
 }
+
 div.num-players {
     height: 600px;
     text-align: center;
     background-repeat: no-repeat;
     background-size: cover;
     font-family: sans-serif;
+    padding: 50px;
 }
+
 div.play {
     height: 600px;
     text-align: center;
     background-repeat: no-repeat;
     background-size: cover;
     font-family: sans-serif;
+    padding: 250px;
+}
+
+button.advOne {
+    height: 100%;
+    width: 32%;
+    background-color: olive;
+    border: none;
+}
+
+button.advTwo {
+    height: 100%;
+    width: 32%;
+    background-color: skyblue;
+    border: none;
+}
+
+button.advThree {
+    height: 100%;
+    width: 32%;
+    background-color: burlywood;
+    border: none;
+}
+
+button.oneplayer {
+    height: 90%;
+    width: 45%;
+    background-color: orange;
+    border: none;
+
+}
+
+button.twoplayer {
+    height: 90%;
+    width: 45%;
+    background-color: orchid;
+    border: none;
 }
