@@ -1,6 +1,7 @@
 function onLoad(){
     window.location.assign("#header");
     window.history.pushState("","","index.html");
+    localStorage.clear();
 }
 
 function chooseAdv(){
@@ -140,6 +141,36 @@ function writePromptQuest(startprompttext, questtext, promptnum){
     });
 }
 
+function writePromptFight(startprompttext, questtext, promptnum) {
+    var startprompt = document.getElementById("startprompt");
+    startprompt.innerHTML = startprompttext;
+    startprompt.style.width = "98vw";
+    startprompt.style.position = "absolute";
+    var quest = document.createElement("p");
+    quest.innerHTML = questtext + "<br><br>";
+    quest.style.width = "98vw";
+    quest.style.position = "absolute";
+    var startpromptinp = document.createElement("p");
+    startpromptinp.innerHTML = "<button onclick='rollD20()' id='startresponse'>Roll Dice (D20)</button>";
+    startpromptinp.width = "98vw";
+    if (promptnum === "1"){
+        localStorage.setItem("fightprompt", "1");
+    }
+    quest.appendChild(startpromptinp);
+    startprompt.appendChild(quest);
+    document.getElementById("play").appendChild(startprompt);
+}
+
+function rollD20() {
+    var diceroll = Math.floor(Math.random()*20)+1;
+    var promptnum = localStorage.getItem("fightprompt");
+    if (promptnum === "1"){
+        localStorage.setItem("diceroll", diceroll);
+        checkPrompt5AdvOne("");
+    }
+    document.getElementById("startresponse").disabled = true;
+}
+
 function checkPrompt1AdvOne(choice) {
     if (choice.toLowerCase().includes("washroom")){
         prompt2WashroomAdvOne();
@@ -221,14 +252,21 @@ function advOneTalkOne() {
 }
 
 function advOneFightOne(){
-
+    writePromptFight("You decide to attack.","In your attack, you realize this might be harder than you initially thought. That means you'll need to roll a 12 or higher to be successful and not be defeated.","1");
 }
 
 function checkPrompt5AdvOne(choice) {
+    var diceroll = localStorage.getItem("diceroll");
     if (choice.toLowerCase().includes("charm")){
-        
+        localStorage.setItem("honour", "honourable");
     } else if (choice.toLowerCase().includes("rude")){
-        
+        localStorage.setItem("honour", "dishonourable");
+    } else if (diceroll < 12){
+        localStorage.setItem("fight1", "unsuccessful");
+        localStorage.setItem("honour", "dishonourable");
+    } else if (diceroll >= 12){
+        localStorage.setItem("fight1","successful");
+        localStorage.setItem("honour", "honourable");
     }
 }
 
