@@ -2,25 +2,30 @@ function onLoad(){
     window.location.assign("#header");
     window.history.pushState("","","index.html");
 }
+
 function chooseAdv(){
     window.location.assign("#choose-adv");
     window.history.pushState("","","index.html");
 }
+
 function choseAdvOne(){
     localStorage.setItem("adventure", "1");
     window.location.assign("#num-players");
     window.history.pushState("","","index.html");
 }
+
 function choseAdvTwo() {
     localStorage.setItem("adventure", "2");
     window.location.assign("#num-players");
     window.history.pushState("","","index.html");
 }
+
 function choseAdvThree() {
     localStorage.setItem("adventure", "3");
     window.location.assign("#num-players");
     window.history.pushState("","","index.html");
 }
+
 function playersOne() {
     localStorage.removeItem("players");
     localStorage.setItem("players", "1");
@@ -28,6 +33,7 @@ function playersOne() {
     window.location.assign("#play");
     window.history.pushState("","","index.html");
 }
+
 function playersTwo() {
     localStorage.removeItem("players");
     localStorage.setItem("players", "2");
@@ -35,6 +41,7 @@ function playersTwo() {
     window.location.assign("#play");
     window.history.pushState("","","index.html");
 }
+
 function findAdventure() {
     var advChose = localStorage.getItem("adventure");
     var players = localStorage.getItem("players");
@@ -47,6 +54,7 @@ function findAdventure() {
         startAdvThree(players, player1name);
     }
 }
+
 function startAdvOne(numplay, player1name) {
     if (numplay === "1"){
         if(player1name === ""){
@@ -58,6 +66,7 @@ function startAdvOne(numplay, player1name) {
         }
     }
 }
+
 function prompt1AdvOne() {
     document.getElementById("startgame").disabled = true;
     var startprompt = document.createElement("p");
@@ -91,6 +100,7 @@ function prompt1AdvOne() {
         }
     });
 }
+
 function writePromptQuest(startprompttext, questtext, promptnum){
     var startprompt = document.getElementById("startprompt");
     startprompt.innerHTML = startprompttext;
@@ -121,10 +131,13 @@ function writePromptQuest(startprompttext, questtext, promptnum){
                 checkPrompt2AdvOne(input);
             } else if (promptnum === "3"){
                 checkPrompt3AdvOne(input);
+            } else if (promptnum === "4"){
+                checkPrompt4AdvOne(input);
             }
         }
     });
 }
+
 function checkPrompt1AdvOne(choice) {
     if (choice.toLowerCase().includes("washroom")){
         prompt2WashroomAdvOne();
@@ -136,9 +149,11 @@ function checkPrompt1AdvOne(choice) {
         }
     }
 }
+
 function prompt2WashroomAdvOne() {
     writePromptQuest("Great! You go to the washroom.","You enter the washroom hoping that inspiration for a plan to get the code strikes you at any moment. But you stand there for a solid minute, nothing coming to you. Then you hear something at the door. Knocking. They can't see you. You're supposed to be gone. So you basically only have two options: hide in a stall or climb out of the window.", "2");
 }
+
 function checkPrompt2AdvOne(choice) {
     if (choice.toLowerCase().includes("hide") || choice.toLowerCase().includes("stall")){
         advOneHideRobots("fromwash");
@@ -146,6 +161,7 @@ function checkPrompt2AdvOne(choice) {
         advOneGoOut();
     }
 }
+
 function advOneHideRobots(from) {
     if (from==="fromhall"){
         writePromptQuest("Great! You go to the hallway, but there are some robots, so you hide along the wall, being sure not to move.","While you hide, you overhear the robots talking. You ignore it at first, but the word 'code' piques your interest. And you hear them say something about the code being on the computer in the owner's office. So should you go to the office? Or maybe you should go back to your desk and think before doing anything? Or maybe running away is the best idea?", "3");
@@ -153,9 +169,11 @@ function advOneHideRobots(from) {
         writePromptQuest("Great! You choose to hide from the robots in the stall.", "While you hide, you overhear the robots talking. You ignore it at first, but the word 'code' piques your interest. And you hear them say something about the code being on the computer in the owner's office. So should you go to the office? Or maybe you should go back to your desk and think before doing anything? Or maybe running away is the best idea?", "3");
     }
 }
+
 function advOneGoOut() {
     writePromptQuest("Great! Now you're outside.", "While outside, you see robots travelling into the building, but not from the entrance or exit that you usually go from. It's some sort of back entrance, probably the one the upper management uses. Now should you go to that entrance and see what the robots are up to? Or should you just go back inside from the main entrance and go back to your desk? Or maybe running away is the best idea?", "3");
 }
+
 function checkPrompt3AdvOne(choice) {
     if (choice.toLowerCase().includes("office") || choice.toLowerCase().includes("owner") || choice.toLowerCase().includes("entrance")){
         advOneOffice();
@@ -165,25 +183,45 @@ function checkPrompt3AdvOne(choice) {
         alert("back to desk away!");
     }
 }
+
 function advOneOffice() {
+    localStorage.setItem("prompt4", "office");
     writePromptQuest("You're there. Upper management, right outside the owner's office.", "But right outside the room, you see it. A large, huge group of robots. Guarding the door to the office. So you can't get in. What are you going to do? Maybe fight it out? Or you could always try talking to them?", "4");
 }
+
 function advOneRunAway(){
+    localStorage.setItem("prompt4", "run");
     writePromptQuest("You decide to run away.", "You run out of the parking lot, trying to reach home, thinking about what else you can do. But you barely make it out of the parking lot when you encounter a group of robots. And they don't look happy. They look at little like they might want to fight you. So you could do that. Or you could talk to them, right?", "4");
 }
+
 function advOneDesk(){
+    localStorage.setItem("prompt4", "desk");
     writePromptQuest("You decide to go back to your desk.", "As you go back to your desk, expecting to see your stuff as you left it, you instead are shocked when you realize it's empty. You look around for your stuff, but instead you see a robot carrying one of your things. How dare it! Now you want your stuff back. So you call out to robot. But do you talk to it or fight with it?", "4");
 }
+
 function checkPrompt4AdvOne(choice) {
-    if (choice.toLowerCase().includes("fight")){
+    if (choice.toLowerCase().includes("fight") || choice.toLowerCase().includes("hit")){
         advOneFightOne();
     } else if (choice.toLowerCase().includes("talk") || choice.toLowerCase().includes("say")){
-        advOneTalk();
+        advOneTalkOne();
     }
 }
+
+function advOneTalkOne() {
+    from = localStorage.getItem("prompt4");
+    if (from === "office"){
+        writePromptQuest("As you walk up to the robots in front of the door, they all look at you.","In particular, you notice one of them really seeming to want your attention. So you talk to that one, casually saying, 'What's up? Why y'all guarding this door?' Quickly, the one you were talking to replies, 'None of your business. Continue your work.' So you're a little confused as to what you should do now. But you realize you have two real options. You could charm the robots or be rude to them. Now which one will give you the better results?","5");
+    }
+}
+
+function advOneFightOne(){
+
+}
+
 function startAdvTwo(numplay, play1name) {
     
 }
+
 function startAdvThree(numplay, play1name) {
     
 }
