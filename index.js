@@ -158,11 +158,27 @@ function advOneGoOut() {
 }
 function checkPrompt3AdvOne(choice) {
     if (choice.toLowerCase().includes("office") || choice.toLowerCase().includes("owner") || choice.toLowerCase().includes("entrance")){
-        alert("go to office away!");
+        advOneOffice();
     } else if (choice.toLowerCase().includes("run") || choice.toLowerCase().includes("away")){
         alert("run away!");
     } else if (choice.toLowerCase().includes("desk")){
         alert("back to desk away!");
+    }
+}
+function advOneOffice() {
+    writePromptQuest("You're there. Upper management, right outside the owner's office.", "But right outside the room, you see it. A large, huge group of robots. Guarding the door to the office. So you can't get in. What are you going to do? Maybe fight it out? Or you could always try talking to them?", "4");
+}
+function advOneRunAway(){
+    writePromptQuest("You decide to run away.", "You run out of the parking lot, trying to reach home, thinking about what else you can do. But you barely make it out of the parking lot when you encounter a group of robots. And they don't look happy. They look at little like they might want to fight you. So you could do that. Or you could talk to them, right?", "4");
+}
+function advOneDesk(){
+    writePromptQuest("You decide to go back to your desk.", "As you go back to your desk, expecting to see your stuff as you left it, you instead are shocked when you realize it's empty. You look around for your stuff, but instead you see a robot carrying one of your things. How dare it! Now you want your stuff back. So you call out to robot. But do you talk to it or fight with it?", "4");
+}
+function checkPrompt4AdvOne(choice) {
+    if (choice.toLowerCase().includes("fight")){
+        advOneFightOne();
+    } else if (choice.toLowerCase().includes("talk") || choice.toLowerCase().includes("say")){
+        advOneTalk();
     }
 }
 function startAdvTwo(numplay, play1name) {
