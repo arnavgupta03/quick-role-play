@@ -91,35 +91,7 @@ function prompt1AdvOne() {
         }
     });
 }
-function checkPrompt1AdvOne(choice) {
-    if (choice.toLowerCase().includes("washroom")){
-        prompt2WashroomAdvOne();
-    } else if (choice.toLowerCase().includes("hall")){
-        if (choice.toLowerCase().includes("manage")){
-            advOneHideRobots("fromhall");
-        } else if (choice.toLowerCase().includes("outside")){
-            advOneClimbWindow();
-        }
-    }
-}
-function prompt2WashroomAdvOne() {
-    writePromptQuest("Great! You go to the washroom.","You enter the washroom hoping that inspiration for a plan to get the code strikes you at any moment. But you stand there for a solid minute, nothing coming to you. Then you hear something at the door. Knocking. They can't see you. You're supposed to be gone. So you basically only have two options: hide in a stall or climb out of the window.");
-}
-function checkPrompt2AdvOne(choice) {
-    if (choice.toLowerCase().includes("hide") || choice.toLowerCase().includes("stall")){
-        advOneHideRobots("fromwash");
-    } else if (choice.toLowerCase().includes("climb") || choice.toLowerCase().includes("window")){
-        advOneClimbWindow();
-    }
-}
-function advOneHideRobots(from) {
-    if (from==="fromhall"){
-        writePromptQuest("Great! You go to the hallway, but there are some robots, so you hide along the wall, being sure not to move.","While you hide, you overhear the robots talking. You ignore it at first, but the word 'code' piques your interest. And you hear them say something about the code being on the computer in the owner's office. So should you go to the office? Or maybe you should go back to your desk and think before doing anything? Or maybe running away is the best idea?");
-    } else if (from==="fromwash"){
-        writePromptQuest("Great! You choose to hide from the robots in the stall.", "While you hide, you overhear the robots talking. You ignore it at first, but the word 'code' piques your interest. And you hear them say something about the code being on the computer in the owner's office. So should you go to the office? Or maybe you should go back to your desk and think before doing anything? Or maybe running away is the best idea?");
-    }
-}
-function writePromptQuest(startprompttext, questtext){
+function writePromptQuest(startprompttext, questtext, promptnum){
     var startprompt = document.getElementById("startprompt");
     startprompt.innerHTML = startprompttext;
     startprompt.style.width = "98vw";
@@ -145,21 +117,53 @@ function writePromptQuest(startprompttext, questtext){
         if (e.code === "Enter"){
             var input = inputField.value;
             inputField.value = "";
-            checkPrompt2AdvOne(input);
+            if (promptnum === "2"){
+                checkPrompt2AdvOne(input);
+            } else if (promptnum === "3"){
+                checkPrompt3AdvOne(input);
+            }
         }
     });
 }
+function checkPrompt1AdvOne(choice) {
+    if (choice.toLowerCase().includes("washroom")){
+        prompt2WashroomAdvOne();
+    } else if (choice.toLowerCase().includes("hall")){
+        if (choice.toLowerCase().includes("manage")){
+            advOneHideRobots("fromhall");
+        } else if (choice.toLowerCase().includes("outside")){
+            advOneGoOut();
+        }
+    }
+}
+function prompt2WashroomAdvOne() {
+    writePromptQuest("Great! You go to the washroom.","You enter the washroom hoping that inspiration for a plan to get the code strikes you at any moment. But you stand there for a solid minute, nothing coming to you. Then you hear something at the door. Knocking. They can't see you. You're supposed to be gone. So you basically only have two options: hide in a stall or climb out of the window.", "2");
+}
+function checkPrompt2AdvOne(choice) {
+    if (choice.toLowerCase().includes("hide") || choice.toLowerCase().includes("stall")){
+        advOneHideRobots("fromwash");
+    } else if (choice.toLowerCase().includes("climb") || choice.toLowerCase().includes("window")){
+        advOneGoOut();
+    }
+}
+function advOneHideRobots(from) {
+    if (from==="fromhall"){
+        writePromptQuest("Great! You go to the hallway, but there are some robots, so you hide along the wall, being sure not to move.","While you hide, you overhear the robots talking. You ignore it at first, but the word 'code' piques your interest. And you hear them say something about the code being on the computer in the owner's office. So should you go to the office? Or maybe you should go back to your desk and think before doing anything? Or maybe running away is the best idea?", "3");
+    } else if (from==="fromwash"){
+        writePromptQuest("Great! You choose to hide from the robots in the stall.", "While you hide, you overhear the robots talking. You ignore it at first, but the word 'code' piques your interest. And you hear them say something about the code being on the computer in the owner's office. So should you go to the office? Or maybe you should go back to your desk and think before doing anything? Or maybe running away is the best idea?", "3");
+    }
+}
+function advOneGoOut() {
+    writePromptQuest("Great! Now you're outside.", "While outside, you see robots travelling into the building, but not from the entrance or exit that you usually go from. It's some sort of back entrance, probably the one the upper management uses. Now should you go to that entrance and see what the robots are up to? Or should you just go back inside from the main entrance and go back to your desk? Or maybe running away is the best idea?", "3");
+}
 function checkPrompt3AdvOne(choice) {
-    if (choice.toLowerCase().includes("office") || choice.toLowerCase().includes("owner")){
+    if (choice.toLowerCase().includes("office") || choice.toLowerCase().includes("owner") || choice.toLowerCase().includes("entrance")){
         alert("go to office away!");
     } else if (choice.toLowerCase().includes("run") || choice.toLowerCase().includes("away")){
         alert("run away!");
     } else if (choice.toLowerCase().includes("desk")){
         alert("back to desk away!");
     }
-}
-function advOneClimbWindow() {
-    alert("climb windows away!")
 }
 function startAdvTwo(numplay, play1name) {
     
