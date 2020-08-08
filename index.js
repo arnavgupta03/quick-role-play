@@ -147,7 +147,7 @@ function writePromptFight(startprompttext, questtext, promptnum) {
     startprompt.style.width = "98vw";
     startprompt.style.position = "absolute";
     var quest = document.createElement("p");
-    quest.innerHTML = questtext + "<br><br>";
+    quest.innerHTML = questtext + "<br>";
     quest.style.width = "98vw";
     quest.style.position = "absolute";
     var startpromptinp = document.createElement("p");
@@ -168,7 +168,6 @@ function rollD20() {
         localStorage.setItem("diceroll", diceroll);
         checkPrompt5AdvOne("");
     }
-    document.getElementById("startresponse").disabled = true;
 }
 
 function checkPrompt1AdvOne(choice) {
@@ -267,6 +266,23 @@ function checkPrompt5AdvOne(choice) {
     } else if (diceroll >= 12){
         localStorage.setItem("fight1","successful");
         localStorage.setItem("honour", "honourable");
+    }
+    if (localStorage.getItem("honour") === "honourable"){
+        if (localStorage.getItem("fight1") == null){
+            if (localStorage.getItem("prompt4") === "run"){
+                
+            }
+        } else if (localStorage.getItem("fight1") != null){
+            if (localStorage.getItem("prompt4") === "run"){
+                writePromptQuest("You successfully defeat the robots by rolling a " + diceroll.toString() + ".","Nice job! You got them. But as you were about to go back home, you see one of the robots moving a bit. You're about to attack it to finish it off, when you hear the robot talk into some kind of phone-like device. It says, 'Protect the office. At all costs.' You realize, you need to go back. Go to the office. You reach the owner's office and you see a sight you could never imagine in your life. A huge robot. At least 20 feet tall. And it looks just like the recently deceased owner of Greedy Ltd. Again, there's really only two things you can think of doing: talking to it or fighting it.","6");
+            }
+        }
+    } else if (localStorage.getItem("honour") === "dishonourable"){
+        if (localStorage.getItem("fight1") == null){
+
+        } else if (localStorage.getItem("fight1") != null){
+
+        }
     }
 }
 
