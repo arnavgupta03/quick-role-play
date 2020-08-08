@@ -133,6 +133,8 @@ function writePromptQuest(startprompttext, questtext, promptnum){
                 checkPrompt3AdvOne(input);
             } else if (promptnum === "4"){
                 checkPrompt4AdvOne(input);
+            } else if (promptnum === "5"){
+                checkPrompt5AdvOne(input);
             }
         }
     });
@@ -178,9 +180,9 @@ function checkPrompt3AdvOne(choice) {
     if (choice.toLowerCase().includes("office") || choice.toLowerCase().includes("owner") || choice.toLowerCase().includes("entrance")){
         advOneOffice();
     } else if (choice.toLowerCase().includes("run") || choice.toLowerCase().includes("away")){
-        alert("run away!");
+        advOneRunAway();
     } else if (choice.toLowerCase().includes("desk")){
-        alert("back to desk away!");
+        advOneDesk();
     }
 }
 
@@ -211,11 +213,23 @@ function advOneTalkOne() {
     from = localStorage.getItem("prompt4");
     if (from === "office"){
         writePromptQuest("As you walk up to the robots in front of the door, they all look at you.","In particular, you notice one of them really seeming to want your attention. So you talk to that one, casually saying, 'What's up? Why y'all guarding this door?' Quickly, the one you were talking to replies, 'None of your business. Continue your work.' So you're a little confused as to what you should do now. But you realize you have two real options. You could charm the robots or be rude to them. Now which one will give you the better results?","5");
+    } else if (from === "run"){
+        writePromptQuest("You approach the robots as they do the same towards you.", "One of them seems ready to attack you and starts moving frantically. So you say something in a panic. But you say it casually. 'What's up? Why y'all coming at me?' Quickly, the one that was about to attack replies, 'None of your business. Go back to your work.' So you're a little confused as to what you should do now. But you realize you have two real options. You could charm the robots or be rude to them. Now which one will give you the better results?", "5");
+    } else if (from === "desk"){
+        writePromptQuest("You walk up to the robot, ready to talk.","At first, you're confused as to what you should say. But then you realize, maybe you should be casual about it. Just say, 'What's up? Why you got my stuff?' The robot simply replied, 'None of your business. Get back to your clean-up tasks.' So you're a little confused as to what you should do now. But you realize you have two real options. You could charm the robots or be rude to them. Now which one will give you the better results?","5")
     }
 }
 
 function advOneFightOne(){
 
+}
+
+function checkPrompt5AdvOne(choice) {
+    if (choice.toLowerCase().includes("charm")){
+        
+    } else if (choice.toLowerCase().includes("rude")){
+        
+    }
 }
 
 function startAdvTwo(numplay, play1name) {
