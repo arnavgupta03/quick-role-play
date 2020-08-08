@@ -37,28 +37,33 @@ div.play {
     background-repeat: no-repeat;
     background-size: cover;
     font-family: sans-serif;
-    padding: 250px;
 }
 
 button.advOne {
-    height: 100%;
+    height: 80%;
     width: 32%;
     background-color: olive;
     border: none;
+    font-size: 40px;
+    padding: 20px;
 }
 
 button.advTwo {
-    height: 100%;
+    height: 80%;
     width: 32%;
     background-color: skyblue;
     border: none;
+    font-size: 40px;
+    padding: 20px;
 }
 
 button.advThree {
-    height: 100%;
+    height: 80%;
     width: 32%;
     background-color: burlywood;
     border: none;
+    font-size: 40px;
+    padding: 20px;
 }
 
 button.oneplayer {
@@ -66,7 +71,8 @@ button.oneplayer {
     width: 45%;
     background-color: orange;
     border: none;
-
+    font-size: 40px;
+    padding: 20px;
 }
 
 button.twoplayer {
@@ -74,4 +80,6 @@ button.twoplayer {
     width: 45%;
     background-color: orchid;
     border: none;
+    font-size: 40px;
+    padding: 20px;
 }
