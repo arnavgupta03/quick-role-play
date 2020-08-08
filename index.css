@@ -45,7 +45,7 @@ button.advOne {
     background-color: olive;
     border: none;
     font-size: 40px;
-    padding: 20px;
+    box-shadow: 0 9px #999;
 }
 
 button.advTwo {
@@ -54,7 +54,7 @@ button.advTwo {
     background-color: skyblue;
     border: none;
     font-size: 40px;
-    padding: 20px;
+    box-shadow: 0 9px #999;
 }
 
 button.advThree {
@@ -63,7 +63,7 @@ button.advThree {
     background-color: burlywood;
     border: none;
     font-size: 40px;
-    padding: 20px;
+    box-shadow: 0 9px #999;
 }
 
 button.oneplayer {
@@ -73,6 +73,7 @@ button.oneplayer {
     border: none;
     font-size: 40px;
     padding: 20px;
+    box-shadow: 0 9px #999;
 }
 
 button.twoplayer {
@@ -82,4 +83,55 @@ button.twoplayer {
     border: none;
     font-size: 40px;
     padding: 20px;
+    box-shadow: 0 9px #999;
+}
+
+button.oneplayer:active {
+    background-color: orange;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+button.twoplayer:active {
+    background-color: orchid;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+button.advOne:active {
+    background-color: olive;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+button.advTwo:active {
+    background-color: skyblue;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+button.advThree:active {
+    background-color: burlywood;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+button.advOne:hover {
+    opacity: 0.5
+}
+
+button.advTwo:hover {
+    opacity: 0.5
+}
+
+button.advThree:hover {
+    opacity: 0.5
+}
+
+button.oneplayer:hover {
+    opacity: 0.5
+}
+
+button.twoplayer:hover {
+    opacity: 0.5
 }
