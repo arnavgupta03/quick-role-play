@@ -172,6 +172,12 @@ function rollD20() {
     } else if (promptnum === "2"){
         localStorage.setItem("diceroll", diceroll);
         checkPrompt7AdvOne("");
+    } else if (promptnum === "3"){
+        localStorage.setItem("diceroll", diceroll);
+        checkPrompt9AdvOne();
+    } else if (promptnum === "4"){
+        localStorage.setItem("diceroll", diceroll);
+        checkFinalBattle();
     }
 }
 
@@ -367,19 +373,79 @@ function checkPrompt8AdvOne(choice) {
 }
 
 function advOneFightSmall() {
-    
+    writePromptFight("You decide to fight against the small robot.","To successfully defeat this robot, you'll need to roll a 13 or higher.","3");
 }
 
 function advOneFightHuge2() {
-    
+    writePromptFight("You decide to fight against the huge robot.","To successfully defeat it, you'll need to roll a 13 or higher.","3");
 }
 
 function advOneTalkSmall() {
-    
+    writePromptFight("You decide to talk to the small robot.","To successfully convince this robot, you'll need to roll a 13 or higher.","3");
 }
 
 function advOneTalkHuge2() {
-    
+    writePromptFight("You decide to talk to the huge robot.","To successfully convince this robot, you'll need to roll a 13 or higher.","3");
+}
+
+function checkPrompt9AdvOne() {
+    var diceroll = localStorage.getItem("diceroll");
+    if (diceroll < 13){
+        localStorage.setItem("fight3", "unsuccessful");
+        advOneCheckWin();
+    } else if (diceroll >= 13){
+        localStorage.setItem("fight3","successful");
+        advOneCheckWin();
+    }
+}
+
+function advOneCheckWin() {
+    if (localStorage.getItem("fight2") === "successful" || localStorage.getItem("fight3") === "successful"){
+        var win = document.getElementById("startprompt");
+        if (localStorage.getItem("honour") === "honourable"){
+            win.innerHTML = "Congratulations! You win! Rejoice! Your win was honourable due to your actions in the first robot encounter. You also unlocked the Pure Win trophy!";
+        } else if (localStorage.getItem("honour") === "dishonourable"){
+            win.innerHTML = "Congratulations! You win! Rejoice! Your win was dishonourable due to your actions in the first robot encounter. You also unlocked the Pure Win trophy!";
+        }
+        win.style.width = "98vw";
+        win.style.position = "absolute";
+        document.getElementById("play").appendChild(win);
+    } else if (localStorage.getItem("fight2") === "unsuccessful" || localStorage.getItem("fight3") === "unsuccessful"){
+        var lose = document.getElementById("startprompt");
+        lose.innerHTML = "Sorry, you've lost the game. Your loss was " + localStorage.getItem("honour") + " due to your actions in the first robot encounter.";
+        lose.style.width = "98vw";
+        lose.style.position = "absolute";
+        document.getElementById("play").appendChild(lose);
+    } else if ((localStorage.getItem("fight2") === "unsuccessful" || localStorage.getItem("fight3") === "successful") || (localStorage.getItem("fight2") === "successful" || localStorage.getItem("fight3") === "unsuccessful")){
+        advOneFinalBattle();
+    }
+}
+
+function advOneFinalBattle() {
+    writePromptFight("You're so close!", "All you need to do now is throw a ball. You see a switch that'll turn off all the robots. But it's a hard throw. That means you'll need 18 or higher on this dice roll. Good luck!", "4");
+}
+
+function checkFinalBattle() {
+    var diceroll = localStorage.getItem("diceroll");
+    if (diceroll < 18){
+        localStorage.setItem("fight4", "unsuccessful");
+        var lose = document.getElementById("startprompt");
+        lose.innerHTML = "Sorry, you've lost the game. Your loss was " + localStorage.getItem("honour") + " due to your actions in the first robot encounter. You also unlocked the Final Chance trophy!";
+        lose.style.width = "98vw";
+        lose.style.position = "absolute";
+        document.getElementById("play").appendChild(lose);
+    } else if (diceroll >= 18){
+        localStorage.setItem("fight4","successful");
+        var win = document.getElementById("startprompt");
+        if (localStorage.getItem("honour") === "honourable"){
+            win.innerHTML = "Congratulations! You win! Rejoice! Your win was honourable due to your actions in the first robot encounter. You also unlocked the Final Chance trophy!";
+        } else if (localStorage.getItem("honour") === "dishonourable"){
+            win.innerHTML = "Congratulations! You win! Rejoice! Your win was dishonourable due to your actions in the first robot encounter. You also unlocked the Final Chance trophy!";
+        }
+        win.style.width = "98vw";
+        win.style.position = "absolute";
+        document.getElementById("play").appendChild(win);
+    }
 }
 
 function startAdvTwo(numplay, play1name) {
