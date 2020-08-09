@@ -400,7 +400,7 @@ function checkPrompt9AdvOne() {
 }
 
 function advOneCheckWin() {
-    if (localStorage.getItem("fight2") === "successful" || localStorage.getItem("fight3") === "successful"){
+    if (localStorage.getItem("fight2") === "successful" && localStorage.getItem("fight3") === "successful"){
         var win = document.getElementById("startprompt");
         if (localStorage.getItem("honour") === "honourable"){
             win.innerHTML = "Congratulations! You win! Rejoice! Your win was honourable due to your actions in the first robot encounter. You also unlocked the Pure Win trophy!";
@@ -410,13 +410,13 @@ function advOneCheckWin() {
         win.style.width = "98vw";
         win.style.position = "absolute";
         document.getElementById("play").appendChild(win);
-    } else if (localStorage.getItem("fight2") === "unsuccessful" || localStorage.getItem("fight3") === "unsuccessful"){
+    } else if (localStorage.getItem("fight2") === "unsuccessful" && localStorage.getItem("fight3") === "unsuccessful"){
         var lose = document.getElementById("startprompt");
         lose.innerHTML = "Sorry, you've lost the game. Your loss was " + localStorage.getItem("honour") + " due to your actions in the first robot encounter.";
         lose.style.width = "98vw";
         lose.style.position = "absolute";
         document.getElementById("play").appendChild(lose);
-    } else if ((localStorage.getItem("fight2") === "unsuccessful" || localStorage.getItem("fight3") === "successful") || (localStorage.getItem("fight2") === "successful" || localStorage.getItem("fight3") === "unsuccessful")){
+    } else if ((localStorage.getItem("fight2") === "unsuccessful" && localStorage.getItem("fight3") === "successful") || (localStorage.getItem("fight2") === "successful" && localStorage.getItem("fight3") === "unsuccessful")){
         advOneFinalBattle();
     }
 }
