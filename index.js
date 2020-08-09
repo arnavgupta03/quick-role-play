@@ -138,6 +138,8 @@ function writePromptQuest(startprompttext, questtext, promptnum){
                 checkPrompt5AdvOne(input);
             } else if (promptnum === "6"){
                 checkPrompt6AdvOne(input);
+            } else if (promptnum === "8"){
+                checkPrompt8AdvOne(input);
             }
         }
     });
@@ -155,9 +157,7 @@ function writePromptFight(startprompttext, questtext, promptnum) {
     var startpromptinp = document.createElement("p");
     startpromptinp.innerHTML = "<button onclick='rollD20()' id='startresponse'>Roll Dice (D20)</button>";
     startpromptinp.width = "98vw";
-    if (promptnum === "1"){
-        localStorage.setItem("fightprompt", "1");
-    }
+    localStorage.setItem("fightprompt", promptnum);
     quest.appendChild(startpromptinp);
     startprompt.appendChild(quest);
     document.getElementById("play").appendChild(startprompt);
@@ -169,6 +169,9 @@ function rollD20() {
     if (promptnum === "1"){
         localStorage.setItem("diceroll", diceroll);
         checkPrompt5AdvOne("");
+    } else if (promptnum === "2"){
+        localStorage.setItem("diceroll", diceroll);
+        checkPrompt7AdvOne("");
     }
 }
 
@@ -309,6 +312,73 @@ function checkPrompt5AdvOne(choice) {
 }
 
 function checkPrompt6AdvOne(choice) {
+    if (choice.toLowerCase().includes("fight") || choice.toLowerCase().includes("hit")){
+        advOneFightHuge();
+    } else if (choice.toLowerCase().includes("talk") || choice.toLowerCase().includes("say")){
+        advOneTalkHuge();
+    }
+}
+
+function advOneFightHuge() {
+    localStorage.setItem("prompt6", "fight");
+    writePromptFight("You decide to attack.","To successfully attack, you'll need to tie the huge robot's legs together with a rope in the corner. Don't worry, it sounds harder than it actually is. But it means you'll need to roll a 8 or higher to be successful and not be defeated.","2");
+}
+
+function advOneTalkHuge() {
+    localStorage.setItem("prompt6", "talk");
+    writePromptFight("You decide to talk.","To successfully talk and get out of the situation, you'll need to be really convincing. Don't worry, it sounds harder than it actually is. But it means you'll need to roll a 8 or higher to be successful.","2");
+}
+
+function checkPrompt7AdvOne(choice) {
+    var diceroll = localStorage.getItem("diceroll");
+    if (diceroll < 8){
+        localStorage.setItem("fight2", "unsuccessful");
+        advOneFightTwoUnsuccessful();
+    } else if (diceroll >= 8){
+        localStorage.setItem("fight2","successful");
+        advOneFightTwoSuccessful();
+    }
+}
+
+function advOneFightTwoUnsuccessful(){
+    var diceroll = localStorage.getItem("diceroll");
+    writePromptQuest("You were unsuccessful against the huge robot since you rolled a " + diceroll.toString() + ".", "The huge robot knocks you down and kicks down the wall behind you. In a panic, you run outside. And weirdly, again, it really only seems like you can either talk or fight with this robot.", "8");
+}
+
+function advOneFightTwoSuccessful(){
+    var diceroll = localStorage.getItem("diceroll");
+    writePromptQuest("You were successful against the huge robot since you rolled a " + diceroll.toString() + ".", "As the huge robot shuts down, a smaller robot comes out. You aren't sure if it'll attack you or leave you be, but to be safe, do you want to talk or fight it?", "8");
+}
+
+function checkPrompt8AdvOne(choice) {
+    if (choice.toLowerCase().includes("fight") || choice.toLowerCase().includes("hit")){
+        if (localStorage.getItem("fight2") === "successful"){
+            advOneFightSmall();
+        } else if (localStorage.getItem("fight2") === "unsuccessful"){
+            advOneFightHuge2();
+        }
+    } else if (choice.toLowerCase().includes("talk") || choice.toLowerCase().includes("say")){
+        if (localStorage.getItem("fight2") === "successful"){
+            advOneTalkSmall();
+        } else if (localStorage.getItem("fight2") === "unsuccessful"){
+            advOneTalkHuge2();
+        }
+    }
+}
+
+function advOneFightSmall() {
+    
+}
+
+function advOneFightHuge2() {
+    
+}
+
+function advOneTalkSmall() {
+    
+}
+
+function advOneTalkHuge2() {
     
 }
 
