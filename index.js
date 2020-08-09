@@ -136,6 +136,8 @@ function writePromptQuest(startprompttext, questtext, promptnum){
                 checkPrompt4AdvOne(input);
             } else if (promptnum === "5"){
                 checkPrompt5AdvOne(input);
+            } else if (promptnum === "6"){
+                checkPrompt6AdvOne(input);
             }
         }
     });
@@ -270,20 +272,44 @@ function checkPrompt5AdvOne(choice) {
     if (localStorage.getItem("honour") === "honourable"){
         if (localStorage.getItem("fight1") == null){
             if (localStorage.getItem("prompt4") === "run"){
-                
+                writePromptQuest("You were able to charm the robots into leaving you alone.","Nice job! As the robots start to walk away, you see one of the robots reach for something. Then, it talks into some kind of phone-like device. It says, 'Protect the office. At all costs.' You realize, you need to go back. Go to the office. You reach the owner's office and you see a sight you could never imagine in your life. A huge robot. At least 20 feet tall. And it looks just like the recently deceased owner of Greedy Ltd. Again, there's really only two things you can think of doing: talking to it or fighting it.","6");
+            } else if (localStorage.getItem("prompt4") === "office"){
+                writePromptQuest("You were able to charm the robots into leaving you alone.","Awesome! You enter to the office. As you enter, you see a sight you could never imagine in your life. A huge robot. At least 20 feet tall. And it looks just like the recently deceased owner of Greedy Ltd. Again, there's really only two things you can think of doing: talking to it or fighting it.", "6");
+            } else if (localStorage.getItem("prompt4") === "desk"){
+                writePromptQuest("You were able to charm the robot into leaving you alone.","Great! As the robot puts your stuff down and begins to walk away, you see it reach for something. Then, it talks into some kind of phone-like device. It says, 'Protect the office. At all costs.' You realize, you need to go to the office. Like right now. You reach the owner's office and you see a sight you could never imagine in your life. A huge robot. At least 20 feet tall. And it looks just like the recently deceased owner of Greedy Ltd. Again, there's really only two things you can think of doing: talking to it or fighting it.","6");
             }
         } else if (localStorage.getItem("fight1") != null){
             if (localStorage.getItem("prompt4") === "run"){
                 writePromptQuest("You successfully defeat the robots by rolling a " + diceroll.toString() + ".","Nice job! You got them. But as you were about to go back home, you see one of the robots moving a bit. You're about to attack it to finish it off, when you hear the robot talk into some kind of phone-like device. It says, 'Protect the office. At all costs.' You realize, you need to go back. Go to the office. You reach the owner's office and you see a sight you could never imagine in your life. A huge robot. At least 20 feet tall. And it looks just like the recently deceased owner of Greedy Ltd. Again, there's really only two things you can think of doing: talking to it or fighting it.","6");
+            } else if (localStorage.getItem("prompt4") === "office"){
+                writePromptQuest("You successfully defeat the robots by rolling a " + diceroll.toString() + ".","Awesome! You got them. You go to the office. As you enter, you see a sight you could never imagine in your life. A huge robot. At least 20 feet tall. And it looks just like the recently deceased owner of Greedy Ltd. Again, there's really only two things you can think of doing: talking to it or fighting it.", "6");
+            } else if (localStorage.getItem("prompt4") === "desk"){
+                writePromptQuest("You successfully defeat the robot by rolling a " + diceroll.toString() + ".","Great! You defeated it. But as it drops to the ground, you see it moving a bit. You're about to attack it to finish it off, when you hear the robot talk into some kind of phone-like device. It says, 'Protect the office. At all costs.' You realize, you need to go to the office. Like right now. You reach the owner's office and you see a sight you could never imagine in your life. A huge robot. At least 20 feet tall. And it looks just like the recently deceased owner of Greedy Ltd. Again, there's really only two things you can think of doing: talking to it or fighting it.","6");
             }
         }
     } else if (localStorage.getItem("honour") === "dishonourable"){
         if (localStorage.getItem("fight1") == null){
-
+            if (localStorage.getItem("prompt4") === "run"){
+                writePromptQuest("You were able to heckle the robots into leaving you alone. But they definitely didn't like it. Their feelings were hurt.","Nice job! As the robots start to walk away, you see one of the robots reach for something. Then, it talks into some kind of phone-like device. It says, 'Protect the office. At all costs.' You realize, you need to go back. Go to the office. You reach the owner's office and you see a sight you could never imagine in your life. A huge robot. At least 20 feet tall. And it looks just like the recently deceased owner of Greedy Ltd. Again, there's really only two things you can think of doing: talking to it or fighting it.","6");
+            } else if (localStorage.getItem("prompt4") === "office"){
+                writePromptQuest("You were able to heckle the robots into leaving you alone. But they definitely didn't like it. Their feelings were hurt.","Awesome! You enter to the office. As you enter, you see a sight you could never imagine in your life. A huge robot. At least 20 feet tall. And it looks just like the recently deceased owner of Greedy Ltd. Again, there's really only two things you can think of doing: talking to it or fighting it.", "6");
+            } else if (localStorage.getItem("prompt4") === "desk"){
+                writePromptQuest("You were able to heckle the robot into leaving you alone. But it definitely didn't like it. It's feelings were hurt.","Great! As the robot puts your stuff down and begins to walk away, you see it reach for something. Then, it talks into some kind of phone-like device. It says, 'Protect the office. At all costs.' You realize, you need to go to the office. Like right now. You reach the owner's office and you see a sight you could never imagine in your life. A huge robot. At least 20 feet tall. And it looks just like the recently deceased owner of Greedy Ltd. Again, there's really only two things you can think of doing: talking to it or fighting it.","6");
+            }
         } else if (localStorage.getItem("fight1") != null){
-
+            if (localStorage.getItem("prompt4") === "run"){
+                writePromptQuest("You fail to defeat the robots by rolling a " + diceroll.toString() + ".","Too bad. Your failure to defeat the robots allows them to pick you up and drag you back to the building, where they take you to the office. There, you see a sight you could never imagine in your life. A huge robot. At least 20 feet tall. And it looks just like the recently deceased owner of Greedy Ltd. The robots put you down, letting you do what you want against it. Again, there's really only two things you can think of doing: talking to it or fighting it.","6");
+            } else if (localStorage.getItem("prompt4") === "office"){
+                writePromptQuest("You fail to defeat the robots by rolling a " + diceroll.toString() + ".","That's unfortunate. Your failure to defeat the robots allows them to pick you up and drag you inside the office. There, you see a sight you could never imagine in your life. A huge robot. At least 20 feet tall. And it looks just like the recently deceased owner of Greedy Ltd. The robots put you down, letting you do what you want against it. Again, there's really only two things you can think of doing: talking to it or fighting it.", "6");
+            } else if (localStorage.getItem("prompt4") === "desk"){
+                writePromptQuest("You fail to defeat the robots by rolling a " + diceroll.toString() + ".","Oh no! You couldn't do it. Your failure to defeat the robot allows it to drag you down the management hall, down to the office. There, you see a sight you could never imagine in your life. A huge robot. At least 20 feet tall. And it looks just like the recently deceased owner of Greedy Ltd. The robots put you down, letting you do what you want against it. Again, there's really only two things you can think of doing: talking to it or fighting it.","6");
+            }
         }
     }
+}
+
+function checkPrompt6AdvOne(choice) {
+    
 }
 
 function startAdvTwo(numplay, play1name) {
