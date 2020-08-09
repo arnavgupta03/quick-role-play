@@ -8,4 +8,4 @@ Currently, QuiRP has 1 adventure and only 1 players capability, but more adventu
 
 ## Greedy's Robots and the Code of Destiny
 
-A dystopian, sci-fi campaign with a branching story that has 6 different endings and two possible trophys you can win!
+A dystopian, sci-fi campaign with a branching story that has 6 different endings and two possible trophies you can win!
