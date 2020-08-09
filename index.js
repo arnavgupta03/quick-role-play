@@ -189,7 +189,11 @@ function checkPrompt1AdvOne(choice) {
             advOneHideRobots("fromhall");
         } else if (choice.toLowerCase().includes("outside")){
             advOneGoOut();
+        } else {
+            alert("Can you specify which hallway?");
         }
+    } else {
+        alert("Sorry, I didn't get that. Could you try rephrasing it?");
     }
 }
 
@@ -202,6 +206,8 @@ function checkPrompt2AdvOne(choice) {
         advOneHideRobots("fromwash");
     } else if (choice.toLowerCase().includes("climb") || choice.toLowerCase().includes("window")){
         advOneGoOut();
+    } else {
+        alert("Sorry, I didn't get that. Could you try rephrasing it?");
     }
 }
 
@@ -224,6 +230,8 @@ function checkPrompt3AdvOne(choice) {
         advOneRunAway();
     } else if (choice.toLowerCase().includes("desk")){
         advOneDesk();
+    } else {
+        alert("Sorry, I didn't get that. Could you try rephrasing it?");
     }
 }
 
@@ -247,6 +255,8 @@ function checkPrompt4AdvOne(choice) {
         advOneFightOne();
     } else if (choice.toLowerCase().includes("talk") || choice.toLowerCase().includes("say")){
         advOneTalkOne();
+    } else {
+        alert("Sorry, I didn't get that. Could you try rephrasing it?");
     }
 }
 
@@ -277,6 +287,8 @@ function checkPrompt5AdvOne(choice) {
     } else if (diceroll >= 12){
         localStorage.setItem("fight1","successful");
         localStorage.setItem("honour", "honourable");
+    } else {
+        alert("Sorry, I didn't get that. Could you try rephrasing it?");
     }
     if (localStorage.getItem("honour") === "honourable"){
         if (localStorage.getItem("fight1") == null){
@@ -322,6 +334,8 @@ function checkPrompt6AdvOne(choice) {
         advOneFightHuge();
     } else if (choice.toLowerCase().includes("talk") || choice.toLowerCase().includes("say")){
         advOneTalkHuge();
+    } else {
+        alert("Sorry, I didn't get that. Could you try rephrasing it?");
     }
 }
 
@@ -369,6 +383,8 @@ function checkPrompt8AdvOne(choice) {
         } else if (localStorage.getItem("fight2") === "unsuccessful"){
             advOneTalkHuge2();
         }
+    } else {
+        alert("Sorry, I didn't get that. Could you try rephrasing it?");
     }
 }
 
